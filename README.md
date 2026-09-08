@@ -2,6 +2,12 @@
 
 iPhoneで虫の声を学習PNGとして保存し、PCで判別プロファイルへ統合して、リアルタイム判別に利用する静的Webアプリです。音声処理、PNG作成、PNG読込はいずれもブラウザ内で完結します。
 
+## GitHub Pages
+
+- リアルタイム判別: https://temochiz-lab.github.io/mushi-scope/
+- iPhone学習アプリ: https://temochiz-lab.github.io/mushi-scope/learn/
+- PC学習読み込みアプリ: https://temochiz-lab.github.io/mushi-scope/import/
+
 ## 3つの画面
 
 - `/learn/`: iPhoneで虫名を付けて10〜30秒録音し、学習PNGを作成
