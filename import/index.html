@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f1e8" />
+    <title>学習PNGを読み込む｜Mushi Scope</title>
+    <link rel="stylesheet" href="../shared/tools.css" />
+  </head>
+  <body>
+    <main class="tool-shell">
+      <div class="top-nav">
+        <a class="brand" href="../">MUSHI SCOPE</a>
+        <nav aria-label="アプリ切替">
+          <a href="../">リアルタイム</a>
+          <a href="../learn/">声をおぼえる</a>
+          <a href="./" aria-current="page">PCで読み込む</a>
+        </nav>
+      </div>
+
+      <header class="tool-hero">
+        <p class="eyebrow">IMPORT / PC</p>
+        <h1>画像から、<br />判別データを育てる。</h1>
+        <p>iPhoneで保存した学習PNGをまとめて読み込み、破損を検査して虫別の判別プロファイルを生成します。処理はPCブラウザ内で完結します。</p>
+      </header>
+
+      <section class="tool-card" aria-labelledby="import-title">
+        <h2 id="import-title">1. 学習PNGを読み込む</h2>
+        <p>元の1024×1024 PNGを選択してください。リサイズやJPEG変換された画像は読み込めません。</p>
+        <label class="drop-zone" id="dropZone">
+          <span><strong>PNGをここへドロップ</strong>またはクリックして複数選択</span>
+          <input id="fileInput" type="file" accept="image/png,.png" multiple />
+        </label>
+        <p class="message" id="importMessage" role="status" aria-live="polite" hidden></p>
+      </section>
+
+      <section class="tool-card" id="samplesPanel" aria-labelledby="samples-title" hidden>
+        <h2 id="samples-title">2. 内容を確認</h2>
+        <p>虫名と録音日時を確認し、必要なら音声を再生してからプロファイルを作成してください。</p>
+        <div class="summary-strip" id="summaryStrip"></div>
+        <ul class="sample-list" id="sampleList"></ul>
+      </section>
+
+      <section class="tool-card" id="exportPanel" aria-labelledby="export-title" hidden>
+        <h2 id="export-title">3. 判別プロファイルを作成</h2>
+        <p>虫名ごとに複数録音の特徴を統合し、リアルタイム判別アプリが読み込むJSONを作ります。</p>
+        <div class="button-row">
+          <button class="action-button" id="exportButton" type="button">判別データをダウンロード</button>
+          <button class="action-button secondary" id="clearButton" type="button">すべてクリア</button>
+        </div>
+        <p class="notice">ダウンロードしたファイルを <code>data/profiles/insect-profiles-v1.json</code> としてリポジトリへ配置してください。</p>
+      </section>
+    </main>
+    <script type="module" src="import.js"></script>
+  </body>
+</html>

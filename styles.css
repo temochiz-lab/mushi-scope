@@ -47,6 +47,33 @@ summary {
   padding: max(40px, env(safe-area-inset-top)) 0 36px;
 }
 
+.app-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 38px;
+}
+
+.app-brand {
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+}
+
+.app-nav nav { display: flex; gap: 4px; }
+.app-nav nav a {
+  padding: 8px 10px;
+  border-radius: 99px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.app-nav nav a[aria-current="page"] { color: #fff; background: var(--green); }
+
 .hero {
   margin-bottom: 28px;
 }
@@ -230,12 +257,7 @@ summary {
   transform: translate(-50%, -50%) scale(1);
 }
 
-.insect-enma { left: 50%; top: 35%; }
-.insect-suzumushi { left: 25%; top: 61%; }
-.insect-matsumushi { left: 60%; top: 74%; }
-.insect-kanetataki { left: 77%; top: 51%; }
-.insect-kutsuwamushi { left: 28%; top: 23%; }
-.insect-unknown { left: 55%; top: 56%; color: #76562d; }
+.insect[data-insect="unknown"] { color: #76562d; }
 
 .meter-row {
   display: grid;
@@ -428,6 +450,12 @@ footer {
   .scope-header { padding: 26px 28px 14px; }
   .meter-row { padding-inline: 28px; }
   .legend { padding-inline: 28px; }
+}
+
+@media (max-width: 560px) {
+  .app-nav { align-items: flex-start; }
+  .app-nav nav { display: grid; text-align: right; }
+  .app-nav nav a { padding: 4px 7px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -13,8 +13,16 @@
   </head>
   <body>
     <main class="shell">
+      <div class="app-nav">
+        <a class="app-brand" href="./">MUSHI SCOPE</a>
+        <nav aria-label="アプリ切替">
+          <a href="./" aria-current="page">リアルタイム</a>
+          <a href="learn/">声をおぼえる</a>
+          <a href="import/">PCで読み込む</a>
+        </nav>
+      </div>
       <header class="hero">
-        <p class="eyebrow">MUSHI SCOPE</p>
+        <p class="eyebrow">REALTIME / iPHONE</p>
         <h1>虫のこえを、<br /><span>目でたどる。</span></h1>
         <p class="lead">マイクに届く秋の音を、端末の中だけでリアルタイム解析します。</p>
       </header>
@@ -37,12 +45,6 @@
             <strong>耳をすませる準備ができました</strong>
             <span>下のボタンからマイクを許可してください</span>
           </div>
-          <span class="insect insect-enma" data-insect="enma" aria-hidden="true">エンマコオロギ</span>
-          <span class="insect insect-suzumushi" data-insect="suzumushi" aria-hidden="true">スズムシ</span>
-          <span class="insect insect-matsumushi" data-insect="matsumushi" aria-hidden="true">マツムシ</span>
-          <span class="insect insect-kanetataki" data-insect="kanetataki" aria-hidden="true">カネタタキ</span>
-          <span class="insect insect-kutsuwamushi" data-insect="kutsuwamushi" aria-hidden="true">クツワムシ</span>
-          <span class="insect insect-unknown" data-insect="unknown" aria-hidden="true">不明な音</span>
         </div>
 
         <div class="meter-row" aria-label="入力音量">
@@ -72,7 +74,7 @@
             <p class="scope-kicker">DETAIL</p>
             <h2 id="readings-title">現在の推定値</h2>
           </div>
-          <span>簡易周波数分析</span>
+          <span id="modelLabel">標準周波数帯</span>
         </div>
         <ul id="readingsList"></ul>
       </section>
@@ -81,7 +83,7 @@
         <summary>この解析について</summary>
         <div>
           <p>
-            初期版は、5種の代表的な周波数帯に含まれる音の強さを比べる簡易推定です。AIによる種同定ではなく、環境音や端末によって結果は変わります。
+            学習プロファイルがある場合は、32帯域の周波数パターンとの類似度で虫を推定します。未登録の場合は5種の代表周波数帯による簡易推定を使います。
           </p>
           <p>
             音量と判定確信度は別々に計算し、直近の結果を平滑化して急な点滅を抑えています。生物調査など正確な同定には使用しないでください。
@@ -92,7 +94,7 @@
 
     <footer>
       <span>音は端末の外へ出ません</span>
-      <span>v0.1 MVP</span>
+      <span>v0.2 Learning MVP</span>
     </footer>
 
     <script type="module" src="app.js"></script>

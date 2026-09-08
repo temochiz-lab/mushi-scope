@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f1e8" />
+    <title>虫の声をおぼえる｜Mushi Scope</title>
+    <link rel="stylesheet" href="../shared/tools.css" />
+  </head>
+  <body>
+    <main class="tool-shell">
+      <div class="top-nav">
+        <a class="brand" href="../">MUSHI SCOPE</a>
+        <nav aria-label="アプリ切替">
+          <a href="../">リアルタイム</a>
+          <a href="./" aria-current="page">声をおぼえる</a>
+          <a href="../import/">PCで読み込む</a>
+        </nav>
+      </div>
+
+      <header class="tool-hero">
+        <p class="eyebrow">LEARNING / iPHONE</p>
+        <h1>虫の声を<br />一枚の画像に。</h1>
+        <p>虫の名前を付けて録音すると、音声と周波数特徴を埋め込んだ学習PNGを端末内で作ります。データは自動送信されません。</p>
+      </header>
+
+      <section class="tool-card" aria-labelledby="setup-title">
+        <h2 id="setup-title">1. 虫の名前と録音時間</h2>
+        <p>対象の虫ができるだけはっきり聞こえる場所で録音してください。</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="speciesName">虫の名前</label>
+            <input id="speciesName" list="speciesSuggestions" maxlength="40" placeholder="例：スズムシ" autocomplete="off" />
+            <datalist id="speciesSuggestions">
+              <option value="スズムシ"></option>
+              <option value="マツムシ"></option>
+              <option value="エンマコオロギ"></option>
+              <option value="カネタタキ"></option>
+              <option value="クツワムシ"></option>
+            </datalist>
+          </div>
+          <div class="field">
+            <label for="duration">録音時間</label>
+            <select id="duration">
+              <option value="10">10秒</option>
+              <option value="20" selected>20秒</option>
+              <option value="30">30秒</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="tool-card" aria-labelledby="record-title">
+        <h2 id="record-title">2. 声を録音</h2>
+        <p>ボタンを押したあと、iPhoneのマイク利用を許可してください。</p>
+        <div class="record-panel">
+          <div class="record-orb" id="recordOrb" aria-hidden="true"></div>
+          <output class="record-time" id="recordTime">00:00</output>
+          <div class="level-meter" aria-label="入力音量"><span id="levelFill"></span></div>
+          <span class="record-status" id="recordStatus" role="status" aria-live="polite">録音待機中</span>
+          <button class="action-button" id="recordButton" type="button">録音を開始</button>
+        </div>
+        <p class="message error" id="errorMessage" role="alert" hidden></p>
+      </section>
+
+      <section class="tool-card result-panel" id="resultPanel" aria-labelledby="result-title" hidden>
+        <h2 id="result-title">3. 学習PNGを保存</h2>
+        <p>画像を長押しして写真へ保存するか、共有ボタンから「画像を保存」を選べます。</p>
+        <div class="result-grid">
+          <img id="pngPreview" alt="作成した学習PNGのプレビュー" />
+          <div>
+            <dl class="result-meta">
+              <div><dt>虫の名前</dt><dd id="resultSpecies">--</dd></div>
+              <div><dt>録音日時</dt><dd id="resultDate">--</dd></div>
+              <div><dt>録音</dt><dd id="resultDuration">--</dd></div>
+              <div><dt>画像内データ</dt><dd id="resultSize">--</dd></div>
+            </dl>
+            <div class="button-row">
+              <button class="action-button" id="shareButton" type="button">画像を共有・保存</button>
+              <button class="action-button secondary" id="downloadButton" type="button">PNGをダウンロード</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p class="notice">録音には周囲の会話などが含まれる場合があります。保存前に環境を確認し、公開リポジトリへは元音声を直接追加しないでください。</p>
+    </main>
+    <script type="module" src="learn.js"></script>
+  </body>
+</html>
