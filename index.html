@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f1e8" />
+    <meta
+      name="description"
+      content="スマートフォンのマイクで周囲の鳴く虫をリアルタイムに簡易推定し、声の強さを可視化します。"
+    />
+    <title>虫のこえスコープ</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">MUSHI SCOPE</p>
+        <h1>虫のこえを、<br /><span>目でたどる。</span></h1>
+        <p class="lead">マイクに届く秋の音を、端末の中だけでリアルタイム解析します。</p>
+      </header>
+
+      <section class="scope-card" aria-labelledby="scope-title">
+        <div class="scope-header">
+          <div>
+            <p class="scope-kicker">LIVE ANALYSIS</p>
+            <h2 id="scope-title">周囲の鳴き声</h2>
+          </div>
+          <div class="status" id="status" role="status" aria-live="polite">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="statusText">待機中</span>
+          </div>
+        </div>
+
+        <div class="visualizer" id="visualizer" aria-label="検出された虫の可視化">
+          <div class="idle-message" id="idleMessage">
+            <span class="idle-rings" aria-hidden="true"></span>
+            <strong>耳をすませる準備ができました</strong>
+            <span>下のボタンからマイクを許可してください</span>
+          </div>
+          <span class="insect insect-enma" data-insect="enma" aria-hidden="true">エンマコオロギ</span>
+          <span class="insect insect-suzumushi" data-insect="suzumushi" aria-hidden="true">スズムシ</span>
+          <span class="insect insect-matsumushi" data-insect="matsumushi" aria-hidden="true">マツムシ</span>
+          <span class="insect insect-kanetataki" data-insect="kanetataki" aria-hidden="true">カネタタキ</span>
+          <span class="insect insect-kutsuwamushi" data-insect="kutsuwamushi" aria-hidden="true">クツワムシ</span>
+          <span class="insect insect-unknown" data-insect="unknown" aria-hidden="true">不明な音</span>
+        </div>
+
+        <div class="meter-row" aria-label="入力音量">
+          <span>入力レベル</span>
+          <div class="meter"><span id="meterFill"></span></div>
+          <output id="levelOutput">-- dB</output>
+        </div>
+
+        <p class="legend">
+          <span><i class="size-icon" aria-hidden="true">Aa</i> 大きさ＝推定相対音量</span>
+          <span><i class="opacity-icon" aria-hidden="true"></i> 濃さ＝判定確信度</span>
+        </p>
+      </section>
+
+      <div class="controls">
+        <button class="primary-button" id="toggleButton" type="button">
+          <span class="button-icon" aria-hidden="true"></span>
+          <span id="buttonText">解析をはじめる</span>
+        </button>
+        <p id="helperText">音声は録音・送信されません</p>
+        <p class="error-message" id="errorMessage" role="alert" hidden></p>
+      </div>
+
+      <section class="readings" id="readings" aria-labelledby="readings-title" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="scope-kicker">DETAIL</p>
+            <h2 id="readings-title">現在の推定値</h2>
+          </div>
+          <span>簡易周波数分析</span>
+        </div>
+        <ul id="readingsList"></ul>
+      </section>
+
+      <details class="about">
+        <summary>この解析について</summary>
+        <div>
+          <p>
+            初期版は、5種の代表的な周波数帯に含まれる音の強さを比べる簡易推定です。AIによる種同定ではなく、環境音や端末によって結果は変わります。
+          </p>
+          <p>
+            音量と判定確信度は別々に計算し、直近の結果を平滑化して急な点滅を抑えています。生物調査など正確な同定には使用しないでください。
+          </p>
+        </div>
+      </details>
+    </main>
+
+    <footer>
+      <span>音は端末の外へ出ません</span>
+      <span>v0.1 MVP</span>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
